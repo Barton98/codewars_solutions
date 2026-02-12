@@ -26,8 +26,9 @@ Example:
 def example_function():
     ...
 '''
+```
 
-🎯 Purpose of This Repository
+### 🎯 Purpose of This Repository
 
 To document my progress in solving Codewars challenges
 To practice Python fundamentals, algorithms, and clean code
@@ -35,6 +36,6 @@ To demonstrate my thought process and coding style
 To isolate tasks and avoid mixing logic from different kata
 To build consistency and track improvement over time
 
-📌 Notes
+#### 📌 Notes
 This repository is continuously updated as I solve new challenges.
 Each solution includes the kata level and my chosen approach.
