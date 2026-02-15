@@ -1,5 +1,56 @@
 #codewars codes
 
+''' #5Kyu
+
+bonus = 1500
+price = 2
+#expected output -----> 12
+
+def beeramid(bonus, price):
+
+    if price <= 0:
+        raise ValueError("Price must be greater than 0!!!")
+    
+    if bonus <= 0:
+        return 0
+
+    can_beer = bonus // price
+    level = 1
+    used = 0
+
+    while used <= can_beer:
+        used += level**2
+        if used <= can_beer:
+            level += 1
+        else:
+            level -= 1
+            break
+    return level
+print (beeramid(bonus, price))
+
+#version level up
+def beeramid(bonus: int, price: int) -> int:
+
+    if price <= 0:
+        raise ValueError("Price must be greater than zero.")
+
+    if bonus <= 0:
+        return 0
+
+    total_cans = bonus // price
+
+    level = 1
+    used_cans = 0
+
+    while used_cans + level**2 <= total_cans:
+        used_cans += level**2
+        level += 1
+
+    return level -1
+print (beeramid(bonus, price))
+'''
+
+
 ''' #6Kyu
 
 walk = ['n','s','n','s','n','s','n','s','n','s'] #true
