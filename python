@@ -1,5 +1,26 @@
 #codewars codes
 
+''' #7Kyu
+
+# return masked string
+cc = "4556364607935616" #--> "############5616"
+
+def maskify(cc):
+
+    if len(cc) <= 4:
+        return cc
+    
+    mask = len(cc) - 4
+    return mask * "#" + cc[-4:]
+
+print(maskify(cc))
+
+#second, better version
+def maskify(cc):
+    return cc if len(cc) <= 4 else "#" * (len(cc) - 4) + cc[-4:]
+'''
+
+
 ''' #5Kyu
 
 bonus = 1500
