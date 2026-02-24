@@ -1,5 +1,237 @@
 #codewars codes
 
+''' #6Kyu
+number = 12345
+char = "*"
+
+def digit_map(char):
+    c = char
+    
+    digit_pattern = {
+        0: [f" {c}{c}{c}{c} ",
+            f"{c}{c}  {c}{c}",
+            f"{c}{c}  {c}{c}",
+            f"{c}{c}  {c}{c}",
+            f"{c}{c}  {c}{c}",
+            f" {c}{c}{c}{c} "],
+        1: [f"  {c}{c}  ",
+            f" {c}{c}{c}  ",
+            f"{c} {c}{c}  ",
+            f"  {c}{c}  ",
+            f"  {c}{c}  ",
+            f"{c}{c}{c}{c}{c}{c}"],
+        2: [f" {c}{c}{c}{c} ",
+            f"{c}{c}  {c}{c}",
+            f"   {c}{c} ",
+            f"  {c}{c}  ",
+            f" {c}{c}   ",
+            f"{c}{c}{c}{c}{c}{c}"],
+        3: [f" {c}{c}{c}{c} ",
+            f"{c}{c}  {c}{c}",
+            f"   {c}{c} ",
+            f"   {c}{c} ",
+            f"{c}{c}  {c}{c}",
+            f" {c}{c}{c}{c} "],
+        4: [f"{c}{c}  {c}{c}",
+            f"{c}{c}  {c}{c}",
+            f"{c}{c}  {c}{c}",
+            f" {c}{c}{c}{c}{c}",
+            f"    {c}{c}",
+            f"    {c}{c}"],
+        5: [f"{c}{c}{c}{c}{c}{c}",
+            f"{c}{c}    ",
+            f"{c}{c}{c}{c}{c} ",
+            f"    {c}{c}",
+            f"    {c}{c}",
+            f"{c}{c}{c}{c}{c} "],
+        6: [f"   {c}{c} ",
+            f"  {c}{c}  ",
+            f" {c}{c}{c}{c} ",
+            f"{c}{c}  {c}{c}",
+            f"{c}{c}  {c}{c}",
+            f" {c}{c}{c}{c} "],
+        7: [f"{c}{c}{c}{c}{c}{c}",
+            f"{c}{c}  {c}{c}",
+            f"   {c}{c} ",
+            f"  {c}{c}  ",
+            f" {c}{c}   ",
+            f" {c}{c}   "],
+        8: [f" {c}{c}{c}{c} ",
+            f"{c}{c}  {c}{c}",
+            f" {c}{c}{c}{c} ",
+            f" {c}{c}{c}{c} ",
+            f"{c}{c}  {c}{c}",
+            f" {c}{c}{c}{c} "],
+        9: [f" {c}{c}{c}{c} ",
+            f"{c}{c}  {c}{c}",
+            f"{c}{c}  {c}{c}",
+            f" {c}{c}{c}{c} ",
+            f"  {c}{c}  ",
+            f" {c}{c}   "],
+    }
+
+    return digit_pattern
+
+def print_number(number, char):
+
+    digits = str(number).zfill(5)
+    patterns = digit_map(char)
+    lines = []
+
+    #moj przeglad typow jak sie zmieniaja
+    print(type(patterns))
+    print(type(patterns[1]))
+    print(type(patterns[1][0]))
+
+    lines.append(char * 40)
+    lines.append(char + (" " * 38) + char)
+
+    for row in range(6):
+            line = "  "
+            for digit in digits:
+                 line += patterns[int(digit)][row] + " "
+            lines.append(char + line + " " + char)
+
+    lines.append(char + (" " * 38) + char)
+    lines.append(char * 40)
+    
+    return "\n".join(lines)
+print(print_number(number, char))
+
+#Production version
+DIGITS = {
+    0: [
+        " XXXX ",
+        "XX  XX",
+        "XX  XX",
+        "XX  XX",
+        "XX  XX",
+        " XXXX ",
+    ],
+    1: [
+        "  XX  ",
+        " XXX  ",
+        "X XX  ",
+        "  XX  ",
+        "  XX  ",
+        "XXXXXX",
+    ],
+    2: [
+        " XXXX ",
+        "XX  XX",
+        "   XX ",
+        "  XX  ",
+        " XX   ",
+        "XXXXXX",
+    ],
+    3: [
+        " XXXX ",
+        "XX  XX",
+        "   XX ",
+        "   XX ",
+        "XX  XX",
+        " XXXX ",
+    ],
+    4: [
+        "XX  XX",
+        "XX  XX",
+        "XX  XX",
+        " XXXXX",
+        "    XX",
+        "    XX",
+    ],
+    5: [
+        "XXXXXX",
+        "XX    ",
+        "XXXXX ",
+        "    XX",
+        "    XX",
+        "XXXXX ",
+    ],
+    6: [
+        "   XX ",
+        "  XX  ",
+        " XXXX ",
+        "XX  XX",
+        "XX  XX",
+        " XXXX ",
+    ],
+    7: [
+        "XXXXXX",
+        "XX  XX",
+        "   XX ",
+        "  XX  ",
+        " XX   ",
+        " XX   ",
+    ],
+    8: [
+        " XXXX ",
+        "XX  XX",
+        " XXXX ",
+        " XXXX ",
+        "XX  XX",
+        " XXXX ",
+    ],
+    9: [
+        " XXXX ",
+        "XX  XX",
+        "XX  XX",
+        " XXXX ",
+        "  XX  ",
+        " XX   ",
+    ],
+}
+
+
+def printNumber(number, char):
+    # --- przygotowanie danych ---
+    digits = str(number).zfill(5)
+
+    digit_height = len(DIGITS[0])
+    digit_width = len(DIGITS[0][0])
+    digit_count = len(digits)
+
+    # szerokość cyfr + odstępy między nimi
+    content_width = digit_width * digit_count + (digit_count - 1)
+
+    # padding poziomy (2 z każdej strony)
+    horizontal_padding = 2
+    inner_width = content_width + horizontal_padding * 2
+
+    # ramka (1 znak z każdej strony)
+    total_width = inner_width + 2
+
+    # --- budowa ramek ---
+    top_bottom = char * total_width
+    empty_line = char + " " * (total_width - 2) + char
+
+    lines = []
+    lines.append(top_bottom)
+    lines.append(empty_line)
+
+    # --- budowa 6 linii cyfr ---
+    for row in range(digit_height):
+        rendered_digits = []
+
+        for d in digits:
+            pattern_row = DIGITS[int(d)][row]
+            rendered_row = pattern_row.replace("X", char)
+            rendered_digits.append(rendered_row)
+
+        joined_digits = " ".join(rendered_digits)
+        padded_line = " " * horizontal_padding + joined_digits + " " * horizontal_padding
+
+        lines.append(char + padded_line + char)
+
+    lines.append(empty_line)
+    lines.append(top_bottom)
+
+    return "\n".join(lines)
+
+print(printNumber(number, char))
+'''
+
+
 ''' #7Kyu
 
 # return masked string
