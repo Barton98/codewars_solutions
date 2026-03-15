@@ -1,6 +1,67 @@
 #codewars codes
 
 
+''' #4Kyu
+snail_map = [[1,2,3,3,3],
+            [4,5,6,6,6,],
+            [7,8,9,9,9],
+            [10,11,12,13,14],
+            [15,16,17,18,19]]
+
+#snail(array) #=> [1,2,3,6,9,8,7,4,5]
+
+snail_map1 = [[1,2,3],
+            [8,9,4],
+            [7,6,5]]
+
+#snail(array) #=> [1,2,3,4,5,6,7,8,9]
+
+snail_map1 = [[]]
+
+snail_map1 = [[1,2,3,4],
+            [5,6,7,8],
+            [9,10,11,12],
+            [13,14,15,16]]
+
+def snail(snail_map):
+
+    if snail_map == [[]]:
+        return []
+    
+    tail = []
+
+    while snail_map:
+
+        tail.extend(snail_map.pop(0))
+        if snail_map:
+            for row in snail_map:
+                tail.append(row.pop(-1))
+
+            tail.extend(snail_map.pop(-1)[::-1])
+
+            for row in reversed(snail_map):
+                tail.append(row.pop(0))
+
+    return tail
+
+print(snail(snail_map))
+
+# More 'python' version
+def snail(snail_map):
+    result = []
+    while snail_map:
+        # 1. Zjadasz górę
+        result.extend(snail_map.pop(0))
+        
+        # 2. Obracasz całą resztę macierzy o 90 stopni
+        # Po obrocie, "prawa krawędź" staje się nową "górą".
+        if snail_map:
+            snail_map = list(zip(*snail_map))[::-1]
+            
+    return result
+'''
+
+
 ''' #6Kyu
 number = 10 # => 23
 
