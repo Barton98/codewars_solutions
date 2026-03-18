@@ -1,5 +1,29 @@
 #codewars codes
 
+''' #6Kyu
+value = 153 # ---> 1^3 + 5^3 + 3^3 = 1 + 125 + 27 = 153
+
+def narcissistic(value):
+    number_str = str(value)
+    number_len = len(number_str)
+    bank = 0
+
+    for digit in number_str:
+        bank += int(digit) ** number_len
+
+    return bank == value
+
+print(narcissistic(value))
+
+#more python solution
+def narcissistic(value):
+    number_str = str(value)
+    power = len(number_str)
+    
+    # "Zsumuj (cyfra do potęgi) dla każdej cyfry w tekście"
+    return sum(int(digit) ** power for digit in number_str) == value
+'''
+
 
 ''' #4Kyu
 snail_map = [[1,2,3,3,3],
