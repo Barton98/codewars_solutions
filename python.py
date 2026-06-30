@@ -1,5 +1,55 @@
 #codewars codes
 
+
+x = 'Take Me To SemYnak' # -> 'semynak'
+
+def high(x):
+
+    list_score = []
+    words = x.lower().split()
+
+    for word in words:
+        win_score = 0
+        for letter in word:
+            win_score += ord(letter)-96
+        list_score.append(win_score)
+
+    return words[list_score.index(max(list_score))]
+
+print(high(x))
+
+
+'''
+n = [1, 2, 3, 4, 5, 6, 7, 8, 9, 0] # => returns "(123) 456-7890"
+
+
+def create_phone_number(n):
+
+    return "({}{}{}) {}{}{}-{}{}{}{}".format(*n)
+
+
+def create_phone_number(n):
+    number_str = list(map(str, n))
+
+    first_part = '('+"".join(number_str[:3])+')'
+
+    second_part = "".join(number_str[3:6])
+
+    third_part = "".join(number_str[6:])
+
+    return f"{first_part} {second_part}-{third_part}"
+
+def create_phone_number(n):
+    # Sklejamy od razu wszystkie liczby w jeden tekst "1234567890"
+    s = "".join(map(str, n)) 
+    
+    return f"({s[:3]}) {s[3:6]}-{s[6:]}"
+
+print(create_phone_number(n))
+'''
+
+
+
 ''' #6Kyu
 value = 153 # ---> 1^3 + 5^3 + 3^3 = 1 + 125 + 27 = 153
 
